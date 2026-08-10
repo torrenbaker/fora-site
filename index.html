@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fora — honest signal about your dating profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;1,500&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#5050EB;
+  --peri:#7B7BF0;
+  --butterwash:#FFFBE0;
+  --ink:#000000;
+  --rust:#B4552F;
+  --tint:#EEEEFC;
+  --gray:#77777f;
+  --gray-light:#c9c9d2;
+  --hairline:#e8e8ee;
+  --track:#e6e6ef;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wordmark{font-family:'Anton',sans-serif;font-weight:400;font-size:28px;letter-spacing:.5px;text-transform:lowercase}
+.kicker{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--indigo)}
+.kicker.on-dark{color:var(--butterwash)}
+.kicker.peri{color:var(--peri)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.btn{display:inline-block;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;border:none;border-radius:999px;padding:14px 30px;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-sm{padding:9px 20px;font-size:13.5px}
+.appstore-note{display:block;font-size:12.5px;color:var(--gray);margin-top:12px}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--hairline)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;opacity:.75;transition:opacity .15s}
+.nav-links a:hover{opacity:1}
+.nav-links a.btn{opacity:1}
+
+/* ---------- hero ---------- */
+.hero{padding:96px 0 100px;background:var(--white)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(42px,5.8vw,70px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin:20px 0 24px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero .lede{font-size:18px;font-weight:300;line-height:1.7;max-width:480px;color:#333;margin-bottom:34px}
+.hero .lede b{font-weight:600;color:var(--ink)}
+.hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+
+/* phone mockup */
+.phone-col{display:flex;justify-content:center}
+.phone{width:340px;background:var(--ink);border-radius:46px;box-shadow:0 24px 70px rgba(0,0,0,.22);padding:12px}
+.screen{background:#fafafc;border-radius:36px;overflow:hidden}
+.screen-head{background:var(--white);padding:20px 18px 14px;border-bottom:1px solid var(--hairline)}
+.screen-head .kicker{font-size:10px}
+.screen-head h4{font-size:20px;font-weight:700;letter-spacing:-.4px;margin-top:3px}
+.screen-cards{padding:14px 12px 18px}
+.card{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:15px 16px 13px;margin-bottom:10px}
+.row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.row-head .name{font-size:13.5px;font-weight:600}
+.row-head .val{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.val.pos{color:var(--indigo)} .val.neg{color:var(--rust)}
+
+/* diverging bar — fills right in indigo, left in rust */
+.dbar{position:relative;height:10px;background:var(--track);border-radius:999px}
+.dbar .zero{position:absolute;left:50%;top:-3px;bottom:-3px;width:1.5px;background:var(--gray-light)}
+.dbar .fill{position:absolute;top:0;bottom:0;border-radius:999px}
+.dbar .fill.pos{left:50%;background:var(--indigo)}
+.dbar .fill.neg{right:50%;background:var(--rust)}
+.dbar-legend{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:1.1px;font-weight:600;color:var(--gray);margin-top:7px;text-transform:uppercase}
+.verdict{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;margin-top:10px}
+.verdict .vdot{width:7px;height:7px;border-radius:50%}
+.vdot.pos{background:var(--indigo)} .vdot.neg{background:var(--rust)} .vdot.split{background:var(--gray)}
+.verdict .panel-of{margin-left:auto;font-weight:400;color:var(--gray-light);font-size:11px}
+
+/* prompt card in Playfair voice */
+.prompt-card .q{font-size:12px;font-weight:600;color:var(--gray);margin-bottom:6px}
+.prompt-card .a{font-family:'Playfair Display',serif;font-weight:500;font-size:17px;line-height:1.45}
+
+/* ---------- sections ---------- */
+section{padding:110px 0}
+.sec-head{max-width:660px;margin-bottom:60px}
+.sec-head h2{font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:16px 0 18px}
+.sec-head p{font-size:17px;font-weight:300;color:#333;line-height:1.7}
+.sec-head p b{font-weight:600}
+
+/* problem — ink section */
+.problem{background:var(--ink);color:#fff;padding:120px 0}
+.problem h2{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-1.8px;line-height:1.1;max-width:760px;margin:16px 0 24px}
+.problem h2 .dim{color:rgba(255,255,255,.45)}
+.problem p{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);max-width:560px;line-height:1.75}
+.problem p b{font-weight:600;color:#fff}
+
+/* how it works */
+.how{background:var(--white)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:var(--tint);border-radius:18px;padding:32px 28px 36px;transition:transform .2s ease}
+.step:hover{transform:translateY(-4px)}
+.step .step-kicker{font-size:11px;font-weight:600;letter-spacing:2.5px;color:var(--indigo);text-transform:uppercase}
+.step h3{font-size:21px;font-weight:700;letter-spacing:-.4px;margin:12px 0 10px}
+.step p{font-size:14.5px;font-weight:300;color:#333;line-height:1.7}
+.step p b{font-weight:600}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:12px;font-weight:500;background:#fff;color:var(--indigo);border:1px solid var(--hairline);border-radius:999px;padding:5px 13px}
+.chip.rust{color:var(--rust)}
+
+/* money section — what you get back */
+.money{background:var(--tint)}
+.money-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.money-card{background:#fff;border-radius:18px;padding:32px 30px;border:1px solid var(--hairline)}
+.money-card h4{font-size:17px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
+.money-card .sub{font-size:13.5px;font-weight:300;color:#555;margin-bottom:24px;line-height:1.65}
+.money-card .sub b{font-weight:600;color:var(--ink)}
+/* dot track */
+.dots{position:relative;height:30px;margin-top:6px}
+.dots .track-line{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--track);transform:translateY(-50%)}
+.dots .zero{position:absolute;left:50%;top:5px;bottom:5px;width:1.5px;background:var(--gray-light)}
+.rdot{position:absolute;width:7px;height:7px;border-radius:50%;top:50%;transform:translate(-50%,-50%)}
+.rdot.pos{background:var(--indigo)} .rdot.neu{background:var(--gray)} .rdot.neg{background:var(--rust)}
+.rdot.stack1{transform:translate(-50%,calc(-50% - 5px))}
+.rdot.stack2{transform:translate(-50%,calc(-50% + 5px))}
+.reason{font-size:13px;margin-top:9px}
+.reason b{font-weight:700}
+.reason .dash{color:var(--gray-light);margin:0 4px}
+.reason.neg-side{color:var(--rust)}
+/* spider */
+.spider-wrap{display:flex;justify-content:center;padding:6px 0 2px}
+.spider-label{font-size:10px;font-weight:600;letter-spacing:.5px;fill:var(--gray)}
+/* trajectory */
+.traj{display:flex;align-items:flex-end;gap:10px;height:96px;padding-top:8px}
+.traj .t-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.traj .t-bar{width:100%;max-width:54px;border-radius:8px 8px 4px 4px;background:var(--peri);opacity:.45}
+.traj .t-col:nth-child(2) .t-bar{opacity:.7}
+.traj .t-col:last-child .t-bar{opacity:1;background:var(--indigo)}
+.traj .t-val{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--indigo)}
+.traj .t-lab{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+
+/* reviewers — butter wash */
+.reviewers{background:var(--butterwash)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.rev-copy h2{font-size:clamp(32px,4vw,46px);font-weight:800;letter-spacing:-1.3px;line-height:1.1;margin:16px 0 18px}
+.rev-copy p{font-size:15.5px;font-weight:300;color:#3a3a30;line-height:1.75;margin-bottom:16px}
+.rev-copy p b{font-weight:600;color:var(--ink)}
+.rev-points{list-style:none;margin-top:24px}
+.rev-points li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;font-weight:300;color:#3a3a30;margin-bottom:14px;line-height:1.6}
+.rev-points li b{font-weight:600;color:var(--ink)}
+.rev-points .pt{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--peri);margin-top:8px}
+/* review demo card */
+.review-demo{background:#fff;border-radius:20px;border:1px solid rgba(0,0,0,.06);box-shadow:0 16px 48px rgba(0,0,0,.08);padding:28px 26px;max-width:380px;margin:0 auto}
+.review-demo .rd-kicker{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--peri)}
+.review-demo .prompt-card{margin:14px 0 20px}
+.review-demo .prompt-card .a{font-size:18px}
+.slider{position:relative;height:12px;background:var(--track);border-radius:999px;margin:10px 0 6px}
+.slider .zero{position:absolute;left:50%;top:-3px;bottom:-3px;width:1.5px;background:var(--gray-light)}
+.slider .thumb{position:absolute;top:50%;left:71%;width:26px;height:26px;border-radius:50%;background:var(--peri);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);transform:translate(-50%,-50%)}
+.slider-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:var(--gray);font-variant-numeric:tabular-nums;margin-bottom:16px}
+.review-demo .chips{display:flex;gap:8px;flex-wrap:wrap}
+.review-demo .chips .chip{background:var(--tint);border:none}
+.review-demo .chips .chip.sel{background:var(--peri);color:#fff}
+.review-demo .rd-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--gray)}
+.review-demo .rd-foot .earn{color:var(--peri)}
+
+/* trust strip */
+.trust{background:var(--indigo);color:#fff;padding:88px 0}
+.trust h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-1.2px;margin:14px 0 44px}
+.trust-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.trust-item{border-top:2px solid rgba(255,255,255,.25);padding-top:18px}
+.trust-item h5{font-size:14.5px;font-weight:700;margin-bottom:8px}
+.trust-item p{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.78);line-height:1.65}
+
+/* faq */
+.faq{background:var(--white)}
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid var(--hairline)}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px 4px;font-size:16.5px;font-weight:600;cursor:pointer}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .plus{font-size:22px;font-weight:400;color:var(--indigo);transition:transform .25s;flex-shrink:0}
+.faq-item[open] summary .plus{transform:rotate(45deg)}
+.faq-item .faq-a{padding:0 4px 26px;font-size:14.5px;font-weight:300;color:#333;line-height:1.75;max-width:640px}
+.faq-item .faq-a b{font-weight:600}
+
+/* final cta */
+.final{background:var(--ink);color:#fff;text-align:center;padding:130px 0}
+.final .wordmark{font-size:56px;color:#fff}
+.final h2{font-size:clamp(30px,4.6vw,52px);font-weight:800;letter-spacing:-1.6px;line-height:1.08;margin:26px 0 18px}
+.final p{font-size:16px;font-weight:300;color:rgba(255,255,255,.7);max-width:440px;margin:0 auto 36px;line-height:1.7}
+.wait-form{display:flex;gap:10px;justify-content:center;max-width:440px;margin:26px auto 0}
+.wait-form input{flex:1;font-family:'Poppins',sans-serif;font-size:14px;font-weight:400;padding:14px 20px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:#fff;outline:none}
+.wait-form input::placeholder{color:rgba(255,255,255,.4)}
+.wait-form input:focus{border-color:var(--peri)}
+.wait-form .btn{background:var(--indigo);color:#fff;flex-shrink:0}
+
+/* footer */
+footer{background:var(--ink);color:#fff;border-top:1px solid rgba(255,255,255,.1);padding:52px 0 40px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot-motto{margin-top:10px;font-size:13px;font-weight:300;color:rgba(255,255,255,.5)}
+.foot-links{display:flex;gap:52px}
+.foot-col h5{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.foot-col a{display:block;font-size:13.5px;font-weight:400;color:rgba(255,255,255,.72);margin-bottom:9px;transition:color .15s}
+.foot-col a:hover{color:#fff}
+.foot-base{margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:12px}
+.badge-18{display:inline-block;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600;margin-right:10px}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .step,.btn{transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* responsive */
+@media (max-width:920px){
+  .hero-grid,.rev-grid,.money-grid{grid-template-columns:1fr}
+  .hero-grid{gap:56px}
+  .steps{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .nav-links a:not(.btn){display:none}
+  section{padding:80px 0}
+  .wait-form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="wordmark">fora</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#read">Your read</a>
+      <a href="#reviewers">For reviewers</a>
+      <a href="#faq">FAQ</a>
+      <a href="#get" class="btn btn-indigo btn-sm">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Honest signal about your dating profile</span>
+      <h1>Find out how it <em>actually</em> lands.</h1>
+      <p class="lede">Submit your dating profile — same photos, same prompts — and a panel of <b>five real women</b> scores every single item and tells you why. Which photos carry you. Which prompt holds you back. No matching, no swiping. <b>fora is the mirror, not the dating app.</b></p>
+      <div class="hero-ctas">
+        <a href="#get" class="btn btn-ink">Coming soon to the App Store</a>
+        <a href="#how" class="btn btn-outline">How it works</a>
+      </div>
+      <span class="appstore-note">iOS · 18+ · Your profile is never public</span>
+    </div>
+
+    <div class="phone-col">
+      <div class="phone" aria-label="fora app results screen">
+        <div class="screen">
+          <div class="screen-head">
+            <span class="kicker">Your read</span>
+            <h4>The panel is in.</h4>
+          </div>
+          <div class="screen-cards">
+            <div class="card">
+              <div class="row-head"><span class="name">Photos</span><span class="val pos">+1.3</span></div>
+              <div class="dbar"><span class="zero"></span><span class="fill pos" style="width:13%"></span></div>
+              <div class="verdict"><span class="vdot pos"></span>Leaned positive<span class="panel-of">panel of 5</span></div>
+            </div>
+            <div class="card">
+              <div class="row-head"><span class="name">Prompts</span><span class="val neg">&minus;0.8</span></div>
+              <div class="dbar"><span class="zero"></span><span class="fill neg" style="width:8%"></span></div>
+              <div class="verdict"><span class="vdot neg"></span>Held it back<span class="panel-of">panel of 5</span></div>
+            </div>
+            <div class="card prompt-card">
+              <p class="q">A shower thought I recently had</p>
+              <p class="a">"Every pizza is a personal pizza if you believe in yourself."</p>
+              <div class="verdict" style="margin-top:12px"><span class="vdot split"></span>Panel was split<span class="panel-of">panel of 5</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE PROBLEM ============ -->
+<section class="problem">
+  <div class="wrap reveal">
+    <span class="kicker on-dark">The problem</span>
+    <h2>Your matches aren't telling you why. <span class="dim">Neither are your friends.</span></h2>
+    <p>The apps hand you outcomes with zero explanation. Your friends are too nice to say the second photo isn't working. So you re-crop, re-order, rewrite — on vibes. <b>fora replaces the guessing with a read.</b></p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">How it works</span>
+      <h2>Build your lineup. Panel of five. Get your read.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step-kicker">01 · Build</span>
+        <h3>Recreate your profile.</h3>
+        <p>The same lineup you run on the apps: <b>6 photos, 3 prompts, your vitals.</b> Two minutes to set up, and nothing is ever public — your profile goes to your panel and no one else.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-kicker">02 · Panel of 5</span>
+        <h3>Every item, scored.</h3>
+        <p>Five verified women each rate <b>all ten items independently</b> on a &minus;5…+5 scale — strongly hurts to strongly helps — and pick one structured reason per item. No essays, no comments. Just signal.</p>
+        <div class="chip-row">
+          <span class="chip">Great smile</span>
+          <span class="chip rust">Feels like a group-photo guessing game</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="step-kicker">03 · The read</span>
+        <h3>See what lands.</h3>
+        <p>Section scores, per-item verdicts, and the character of your profile on six axes. Fix the lineup, <b>resubmit, and watch the trend move.</b> That loop is the whole product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT YOU GET BACK ============ -->
+<section class="money" id="read">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">What you get back</span>
+      <h2>Not a score. A read.</h2>
+      <p>No stars, no percentages. fora's instrument is a signed <b>&minus;5…+5 scale with a true zero</b> — because "the panel wasn't moved" and "the panel disliked it" are different findings.</p>
+    </div>
+    <div class="money-grid">
+      <div class="money-card reveal">
+        <h4>Section scores &amp; verdicts</h4>
+        <p class="sub">Photos, prompts, overall — each with a signed mean and a plain-language verdict.</p>
+        <div style="margin-bottom:18px">
+          <div class="row-head"><span class="name">Photo 2</span><span class="val pos">+2.4</span></div>
+          <div class="dbar"><span class="zero"></span><span class="fill pos" style="width:24%"></span></div>
+          <div class="verdict"><span class="vdot pos"></span>Leaned positive<span class="panel-of">panel of 5</span></div>
+        </div>
+        <div>
+          <div class="row-head"><span class="name">Prompt 3</span><span class="val neg">&minus;1.8</span></div>
+          <div class="dbar"><span class="zero"></span><span class="fill neg" style="width:18%"></span></div>
+          <div class="verdict"><span class="vdot neg"></span>Held it back<span class="panel-of">panel of 5</span></div>
+        </div>
+        <div class="dbar-legend" style="margin-top:16px"><span>&minus;5 strongly hurts</span><span>0</span><span>+5 strongly helps</span></div>
+      </div>
+
+      <div class="money-card reveal">
+        <h4>The reveal: how five scores spread</h4>
+        <p class="sub">Behind the paid reveal — all five anonymous positions on every item, plus the panel's top reasons. Disagreement is a finding, not a flaw.</p>
+        <div class="dots">
+          <span class="track-line"></span><span class="zero"></span>
+          <span class="rdot neg" style="left:24%"></span>
+          <span class="rdot neu" style="left:48%"></span>
+          <span class="rdot pos" style="left:67%"></span>
+          <span class="rdot pos stack1" style="left:79%"></span>
+          <span class="rdot pos stack2" style="left:79%"></span>
+        </div>
+        <p class="reason"><b>3 of 5</b><span class="dash">—</span>Natural, candid energy</p>
+        <p class="reason neg-side"><b>2 of 5</b><span class="dash">—</span>This answer could be anyone's</p>
+      </div>
+
+      <div class="money-card reveal">
+        <h4>The six-axis read</h4>
+        <p class="sub">The character of your profile as a shape, not a number — where it's strong, where it's flat.</p>
+        <div class="spider-wrap">
+          <svg width="270" height="230" viewBox="0 0 270 230" role="img" aria-label="Six-axis spider chart of profile character">
+            <g stroke="#e6e6ef" fill="none">
+              <polygon points="135,35 213,80 213,170 135,215 57,170 57,80"/>
+              <polygon points="135,65 187,95 187,155 135,185 83,155 83,95"/>
+              <polygon points="135,95 161,110 161,140 135,155 109,140 109,110"/>
+              <line x1="135" y1="125" x2="135" y2="35"/><line x1="135" y1="125" x2="213" y2="80"/>
+              <line x1="135" y1="125" x2="213" y2="170"/><line x1="135" y1="125" x2="135" y2="215"/>
+              <line x1="135" y1="125" x2="57" y2="170"/><line x1="135" y1="125" x2="57" y2="80"/>
+            </g>
+            <polygon points="135,47 200,87 176,151 135,197 96,148 88,98" fill="rgba(80,80,235,.16)" stroke="#5050EB" stroke-width="2"/>
+            <g class="spider-label">
+              <text x="135" y="26" text-anchor="middle">Aesthetics</text>
+              <text x="222" y="76" text-anchor="start">Charm</text>
+              <text x="222" y="180" text-anchor="start">Approach</text>
+              <text x="135" y="228" text-anchor="middle">Personality</text>
+              <text x="48" y="180" text-anchor="end">Uniqueness</text>
+              <text x="48" y="76" text-anchor="end">Versatility</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="money-card reveal">
+        <h4>The trajectory</h4>
+        <p class="sub">Fix the lineup, resubmit, and see whether the read moves. Improvement you can actually verify.</p>
+        <div class="traj">
+          <div class="t-col"><span class="t-val">&minus;0.6</span><div class="t-bar" style="height:26px"></div><span class="t-lab">Run 1</span></div>
+          <div class="t-col"><span class="t-val">+0.7</span><div class="t-bar" style="height:48px"></div><span class="t-lab">Run 2</span></div>
+          <div class="t-col"><span class="t-val">+1.9</span><div class="t-bar" style="height:78px"></div><span class="t-lab">Run 3</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR REVIEWERS ============ -->
+<section class="reviewers" id="reviewers">
+  <div class="wrap rev-grid">
+    <div class="rev-copy reveal">
+      <span class="kicker peri">For reviewers</span>
+      <h2>Your opinion, finally worth something.</h2>
+      <p>Judging dating profiles is genuinely fun — fora just makes it count. Open the deck, and the next profile is waiting: slide a score under each photo and prompt, tap one reason, done. <b>About two minutes, and you earn on every review.</b></p>
+      <ul class="rev-points">
+        <li><span class="pt"></span><span><b>He never sees who reviewed him.</b> Reviews only display once at least two reviewers agree — no single opinion is ever identifiable. That's a hard guarantee, not a policy.</span></li>
+        <li><span class="pt"></span><span><b>You can't be quoted, because you never type.</b> Score plus reason chip — there's no free text anywhere in reviews.</span></li>
+        <li><span class="pt"></span><span><b>Your Taste.</b> The more you review, the more fora shows you what your ratings say about your own eye — what you reward, what you punish, where you split from the panel.</span></li>
+        <li><span class="pt"></span><span><b>Real people on both sides.</b> Every reviewer and every profile passes a real-person selfie check.</span></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="review-demo" aria-label="Example review card">
+        <span class="rd-kicker">Next up · Prompt 2 of 10</span>
+        <div class="prompt-card">
+          <p class="q">The way to win me over is</p>
+          <p class="a">"Bring snacks to the function. Any function. All functions."</p>
+        </div>
+        <div class="slider"><span class="zero"></span><span class="thumb"></span></div>
+        <div class="slider-labels"><span>&minus;5</span><span>0</span><span>+5</span></div>
+        <div class="chips">
+          <span class="chip sel">Made me smile</span>
+          <span class="chip">Easy to reply to</span>
+          <span class="chip">Trying too hard</span>
+        </div>
+        <div class="rd-foot"><span>8 of 10 rated</span><span class="earn">+ credits on submit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust">
+  <div class="wrap">
+    <span class="kicker on-dark">Trust &amp; safety</span>
+    <h2 class="reveal">Honest by design. Safe by architecture.</h2>
+    <div class="trust-grid">
+      <div class="trust-item reveal">
+        <h5>Real-person verified</h5>
+        <p>Every reviewer and every submitter passes a selfie check. No bots, no catfish, both directions.</p>
+      </div>
+      <div class="trust-item reveal">
+        <h5>No free text, ever</h5>
+        <p>Feedback is a score plus a preset reason. The language to write an insult doesn't exist in the product.</p>
+      </div>
+      <div class="trust-item reveal">
+        <h5>Anonymity, enforced</h5>
+        <p>Reviews display only when 2+ reviewers agree — mathematically, no single voice is ever identifiable.</p>
+      </div>
+      <div class="trust-item reveal">
+        <h5>Every photo scanned</h5>
+        <p>All images are content-scanned before they're ever stored. Nothing unsafe enters the deck.</p>
+      </div>
+      <div class="trust-item reveal">
+        <h5>18+ only</h5>
+        <p>fora is for adults. Age-gated at signup, both sides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Fair questions.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Is it anonymous?<span class="plus">+</span></summary>
+        <div class="faq-a">Yes — absolutely, in both directions. He never learns who reviewed him; reviews only display once at least <b>two reviewers agree</b>, so no single opinion is ever identifiable. And his profile is only ever seen by his panel — never public, never browsable.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Will people be mean?<span class="plus">+</span></summary>
+        <div class="faq-a">They can't write anything. Reviews are a score and a choice from preset reasons — there's <b>no free text anywhere</b>. A score can be honestly negative; it can't be an insult.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Who reviews my profile?<span class="plus">+</span></summary>
+        <div class="faq-a">Five verified women, each rating independently — every photo, every prompt. What you get back is a real spread of takes, not one loud opinion.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How long does it take?<span class="plus">+</span></summary>
+        <div class="faq-a">Usually within a day — it depends on the queue. You'll see your panel fill in as reviews land.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What does it cost?<span class="plus">+</span></summary>
+        <div class="faq-a">fora runs on credits. Your <b>welcome grant covers your first runs</b>, so you'll see a full read before you ever pay. Reviewers never pay for anything — they earn.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="get">
+  <div class="wrap">
+    <span class="wordmark">fora</span>
+    <h2>Stop guessing.<br>Get the read.</h2>
+    <p>Coming soon to the App Store. Leave your email and be first on the panel.</p>
+    <a href="#" class="btn btn-indigo">Coming soon to the App Store</a>
+    <div class="wait-form">
+      <input type="email" placeholder="you@email.com" aria-label="Email address">
+      <button class="btn" type="button">Notify me</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="wordmark" style="color:#fff">fora</span>
+        <p class="foot-motto">Honest signal about your dating profile.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h5>Product</h5>
+          <a href="#how">How it works</a>
+          <a href="#read">Your read</a>
+          <a href="#reviewers">For reviewers</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="foot-col">
+          <h5>Company</h5>
+          <a href="mailto:hello@fora.example">Contact</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span><span class="badge-18">18+</span>fora is for adults only.</span>
+      <span>© fora</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
