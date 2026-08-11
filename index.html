@@ -3,8 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fora — honest signal about your dating profile</title>
-<meta name="description" content="fora shows you how your dating profile actually lands. A panel of five real women scores every photo and prompt — and tells you why.">
+<title>fora — dating profile review by a panel of real women</title>
+<meta name="description" content="Get an honest dating profile review. Five verified women score every photo and prompt in your lineup on a −5 to +5 scale — and tell you why. No AI guesswork, no free-text insults. iOS · 18+.">
+<link rel="canonical" href="https://www.withfora.com/">
+<meta name="theme-color" content="#5050EB">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="fora">
+<meta property="og:url" content="https://www.withfora.com/">
+<meta property="og:title" content="fora — dating profile review by a panel of real women">
+<meta property="og:description" content="Every photo and prompt in your lineup, scored by five verified women — with the reason why. The mirror, not the dating app.">
+<meta property="og:image" content="https://www.withfora.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="fora — find out how your dating profile actually lands">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="fora — dating profile review by a panel of real women">
+<meta name="twitter:description" content="Every photo and prompt in your lineup, scored by five verified women — with the reason why. The mirror, not the dating app.">
+<meta name="twitter:image" content="https://www.withfora.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.withfora.com/#org",
+      "name": "fora",
+      "legalName": "Fora Holding LLC",
+      "url": "https://www.withfora.com/",
+      "logo": "https://www.withfora.com/icon-512.png",
+      "email": "support@withfora.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.withfora.com/#website",
+      "url": "https://www.withfora.com/",
+      "name": "fora",
+      "publisher": { "@id": "https://www.withfora.com/#org" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "fora",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "description": "fora shows you how your dating profile actually lands. A panel of five verified women scores every photo and prompt on a −5 to +5 scale and picks a structured reason for each score. No matching, no chatting, no swiping.",
+      "url": "https://www.withfora.com/",
+      "publisher": { "@id": "https://www.withfora.com/#org" },
+      "contentRating": "18+",
+      "releaseNotes": "Coming soon to the App Store."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it anonymous?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — absolutely, in both directions. He never learns who reviewed him; reviews only display once at least two reviewers agree, so no single opinion is ever identifiable. And his profile is only ever seen by his panel — never public, never browsable." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will people be mean?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They can't write anything. Reviews are a score and a choice from preset reasons — there's no free text anywhere. A score can be honestly negative; it can't be an insult." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who reviews my profile?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Five verified women, each rating independently — every photo, every prompt. What you get back is a real spread of takes, not one loud opinion." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is fora different from AI profile reviews?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AI tools guess what women think. fora asks them. Every read comes from five real, verified women rating independently — the same people your profile is actually trying to reach." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Usually within a day — it depends on the queue. You'll see your panel fill in as reviews land." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "fora runs on credits. Your welcome grant covers your first runs, so you'll see a full read before you ever pay. Reviewers never pay for anything — they earn." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,6 +137,8 @@ h1,h2{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-.015e
 .textlink:hover{text-decoration:underline;text-underline-offset:4px}
 
 .kicker{display:block;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 22px;border-radius:0 0 10px 0;z-index:100;font-size:14px;font-weight:500}
+.skip-link:focus{left:0}
 
 /* ---------- nav ---------- */
 nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--hairline)}
@@ -262,10 +357,12 @@ footer{background:#fff;padding:64px 0 48px;border-top:1px solid var(--hairline)}
 </head>
 <body>
 
-<nav>
+<a class="skip-link" href="#top">Skip to content</a>
+
+<nav aria-label="Main">
   <div class="wrap nav-inner">
     <a href="#top" class="brand">
-      <img src="/foralogo.PNG" alt="fora logo">
+      <img src="/foralogo.PNG" alt="fora heart logo" width="51" height="46">
       <span class="wordmark">fora</span>
     </a>
     <div class="nav-links">
@@ -583,6 +680,10 @@ footer{background:#fff;padding:64px 0 48px;border-top:1px solid var(--hairline)}
         <div class="faq-a">Five verified women, each rating independently — every photo, every prompt. What you get back is a real spread of takes, not one loud opinion.</div>
       </details>
       <details class="faq-item">
+        <summary>How is fora different from AI profile reviews?<span class="plus">+</span></summary>
+        <div class="faq-a">AI tools guess what women think. fora asks them. Every read comes from <b>five real, verified women</b> rating independently — the same people your profile is actually trying to reach.</div>
+      </details>
+      <details class="faq-item">
         <summary>How long does it take?<span class="plus">+</span></summary>
         <div class="faq-a">Usually within a day — it depends on the queue. You'll see your panel fill in as reviews land.</div>
       </details>
@@ -601,10 +702,11 @@ footer{background:#fff;padding:64px 0 48px;border-top:1px solid var(--hairline)}
     <h2>Stop guessing.<br>Get the read.</h2>
     <p>Coming soon to the App Store. Leave your email and be first to know.</p>
     <a href="#" class="btn btn-ink">Coming soon to the App Store</a>
-    <div class="wait-form">
-      <input type="email" placeholder="you@email.com" aria-label="Email address">
-      <button class="btn" type="button">Notify me</button>
-    </div>
+    <form class="wait-form" id="waitlist" action="mailto:support@withfora.com" method="get">
+      <input type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>
+      <button class="btn" type="submit">Notify me</button>
+    </form>
+    <p class="fine" id="wait-thanks" hidden>Opening your email app — send that draft and you're on the list.</p>
     <p class="fine">iOS · 18+ · Your profile is never public</p>
   </div>
 </section>
@@ -614,7 +716,7 @@ footer{background:#fff;padding:64px 0 48px;border-top:1px solid var(--hairline)}
     <div class="foot-grid">
       <div>
         <div class="foot-brand">
-          <img src="/foralogo.PNG" alt="">
+          <img src="/foralogo.PNG" alt="" width="42" height="38" loading="lazy">
           <span class="wordmark">fora</span>
         </div>
         <p class="foot-motto">Honest signal about your dating profile.</p>
@@ -643,6 +745,14 @@ footer{background:#fff;padding:64px 0 48px;border-top:1px solid var(--hairline)}
 </footer>
 
 <script>
+document.getElementById('waitlist').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = this.email.value.trim();
+  if(!email) return;
+  location.href = 'mailto:support@withfora.com?subject=' + encodeURIComponent('Waitlist: notify me at launch')
+    + '&body=' + encodeURIComponent('Please add me to the fora launch list: ' + email);
+  document.getElementById('wait-thanks').hidden = false;
+});
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
 },{threshold:0.1});
