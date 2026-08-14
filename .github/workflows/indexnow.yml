@@ -26,6 +26,7 @@ jobs:
               "keyLocation": "https://www.withfora.com/29a7146e5f68c30d6d5ad37cffc33162.txt",
               "urlList": [
                 "https://www.withfora.com/",
+                "https://www.withfora.com/about/",
                 "https://www.withfora.com/privacy/",
                 "https://www.withfora.com/terms/",
                 "https://www.withfora.com/accessibility/"
