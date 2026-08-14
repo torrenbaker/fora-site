@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility — fora</title>
+<meta name="description" content="How fora approaches accessibility on withfora.com, and how to report a barrier.">
+<link rel="canonical" href="https://www.withfora.com/accessibility/">
+<meta name="theme-color" content="#5050EB">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="fora">
+<meta property="og:url" content="https://www.withfora.com/accessibility/">
+<meta property="og:title" content="Accessibility — fora">
+<meta property="og:image" content="https://www.withfora.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#5050EB; --butter:#FFFBE0; --ink:#000; --body:#3d3d42;
+  --muted:#77777f; --hairline:rgba(0,0,0,.09); --tint:#EEEEFC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--indigo);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+.wordmark{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;text-transform:lowercase}
+.wrap{max-width:760px;margin:0 auto;padding:0 28px}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--hairline)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1140px;margin:0 auto;padding:0 32px}
+.brand{color:var(--indigo);display:flex;align-items:center;gap:10px}
+.brand img{height:40px;width:auto}
+.brand .wordmark{font-size:28px;color:var(--indigo)}
+.brand:hover{text-decoration:none}
+.nav-back{font-size:13.5px;font-weight:500;color:var(--body)}
+header.page{padding:76px 0 44px;border-bottom:1px solid var(--hairline)}
+header.page h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,5vw,52px);letter-spacing:-.015em;line-height:1.1}
+.meta{margin-top:26px;font-size:13.5px;color:var(--muted);line-height:1.9}
+.meta b{font-weight:500;color:var(--body)}
+main{padding:24px 0 100px}
+main .intro{font-size:15.5px;font-weight:300;color:var(--body);line-height:1.85;padding:28px 0 8px}
+main .intro b{font-weight:500;color:var(--ink)}
+section.leg{padding:26px 0 6px}
+section.leg h2{font-size:18px;font-weight:600;letter-spacing:-.2px;margin-bottom:14px}
+section.leg h2 .n{color:var(--indigo);margin-right:10px;font-variant-numeric:tabular-nums}
+section.leg p, section.leg li{font-size:15px;font-weight:300;color:var(--body);line-height:1.85}
+section.leg p{margin-bottom:12px}
+section.leg ul{list-style:none;margin:0 0 12px}
+section.leg li{padding:7px 0 7px 22px;position:relative}
+section.leg li::before{content:"";position:absolute;left:2px;top:17px;width:6px;height:6px;border-radius:50%;background:var(--indigo)}
+section.leg b{font-weight:500;color:var(--ink)}
+.contact-card{margin-top:44px;background:var(--butter);border-radius:16px;padding:28px 30px}
+.contact-card h2{font-size:16px;font-weight:600;margin-bottom:8px}
+.contact-card p{font-size:14.5px;font-weight:300;color:var(--body);line-height:1.8}
+footer{border-top:1px solid var(--hairline);padding:36px 0}
+.foot{max-width:1140px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.foot a{color:var(--body);margin-left:22px}
+.badge-18{display:inline-block;border:1px solid var(--muted);color:var(--muted);border-radius:5px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:10px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="brand"><img src="/foralogo.PNG" alt="fora heart logo"><span class="wordmark">fora</span></a>
+    <a href="/" class="nav-back">&larr; Back to withfora.com</a>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <h1>Accessibility</h1>
+    <p class="meta">
+      <b>Last updated:</b> August 14, 2026 &nbsp;&middot;&nbsp; <b>Applies to:</b> withfora.com<br>
+      <b>Target standard:</b> WCAG 2.2 Level AA
+    </p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="intro">fora is built to be usable by everyone, including people who browse with a screen reader, navigate by keyboard, or need larger text and higher contrast. This page describes where we are, what we have done, and how to tell us when we get it wrong.</p>
+
+    <section class="leg">
+      <h2><span class="n">1.</span>Our target</h2>
+      <ul>
+        <li>We aim to meet <b>WCAG 2.2 Level AA</b>, the standard most widely used to judge whether a website is accessible.</li>
+        <li>We treat this as an ongoing commitment rather than a finished project. New pages and changes are checked against it.</li>
+      </ul>
+    </section>
+
+    <section class="leg">
+      <h2><span class="n">2.</span>What we have done</h2>
+      <ul>
+        <li><b>Text alternatives.</b> Meaningful images carry descriptive alternative text. Purely decorative images are marked so screen readers skip them instead of reading noise.</li>
+        <li><b>Keyboard access.</b> Every link and control can be reached and operated with a keyboard alone, with a visible focus indicator.</li>
+        <li><b>Contrast.</b> Body text is set to meet or exceed the 4.5:1 contrast ratio against its background.</li>
+        <li><b>Structure.</b> Pages use real headings in order, landmark regions, and semantic HTML rather than styled <code>div</code>s, so assistive technology can navigate them.</li>
+        <li><b>Motion.</b> The moving panel on the home page pauses on hover and is disabled entirely for anyone whose system is set to <b>reduce motion</b>.</li>
+        <li><b>Zoom and reflow.</b> The site reflows to a single column and remains usable at 200% zoom and on small screens.</li>
+      </ul>
+    </section>
+
+    <section class="leg">
+      <h2><span class="n">3.</span>Known limitations</h2>
+      <ul>
+        <li>The home page hero is a large decorative wordmark with photography passing across it. It is presentational and is not announced to screen readers; the same information is stated in text immediately below it.</li>
+        <li>We have not yet completed a formal third-party audit. Our checks to date are internal and automated.</li>
+      </ul>
+    </section>
+
+    <section class="leg">
+      <h2><span class="n">4.</span>Tell us about a barrier</h2>
+      <div class="contact-card">
+        <h2>We want to hear about it</h2>
+        <p>If any part of this site is difficult or impossible for you to use, email <a href="mailto:support@withfora.com">support@withfora.com</a> with the page and what went wrong. We aim to respond within five business days and to fix confirmed barriers as quickly as we reasonably can.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <span><span class="badge-18">18+</span>fora is for adults only. &copy; 2026 Fora Holding LLC</span>
+    <span>
+      <a href="/">Home</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

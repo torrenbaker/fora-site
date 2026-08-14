@@ -1,0 +1,33 @@
+name: IndexNow
+
+# Pings IndexNow (Bing, Yandex, Seznam, Naver) whenever the site changes.
+# Bing's index is what feeds ChatGPT Search, so this is the cheapest way
+# to get a static site re-crawled quickly. Google ignores IndexNow.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -sS -X POST 'https://api.indexnow.org/IndexNow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d '{
+              "host": "www.withfora.com",
+              "key": "29a7146e5f68c30d6d5ad37cffc33162",
+              "keyLocation": "https://www.withfora.com/29a7146e5f68c30d6d5ad37cffc33162.txt",
+              "urlList": [
+                "https://www.withfora.com/",
+                "https://www.withfora.com/privacy/",
+                "https://www.withfora.com/terms/",
+                "https://www.withfora.com/accessibility/"
+              ]
+            }' -w '\nHTTP %{http_code}\n'

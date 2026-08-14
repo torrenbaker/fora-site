@@ -164,6 +164,8 @@ a{text-decoration:none;color:inherit}
 .sec-h h2 span{color:var(--indigo)}
 .sec-h p{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-align:right;line-height:1.8}
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.illus{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--dim);text-align:center}
+.illus.l{text-align:left;margin-top:14px}
 .tile{position:relative;border-radius:22px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end}
 .tile .slot{position:absolute;inset:0;width:100%;height:100%;border-radius:22px}
 .tile .scrim{position:absolute;inset:0;z-index:5;background:linear-gradient(to top,rgba(10,10,16,.84),rgba(10,10,16,.1) 60%,transparent)}
@@ -482,7 +484,7 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
       <h1>We show men what women <span class="hl">actually think</span> of their dating profile.</h1>
       <p class="lede">Put in the same six photos and three prompts you already run. Five verified women score
       <b>every single item</b> from &minus;5 to +5 and pick a reason for each one. You find out which photo is
-      carrying you and which one is quietly costing you matches.</p>
+      carrying you and which one is quietly holding you back.</p>
       <div class="facts">
         <div class="fct"><b>5</b><span>women<br>score it</span></div>
         <div class="fct"><b>10</b><span>items rated<br>one at a time</span></div>
@@ -514,21 +516,22 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
     </div>
     <div class="tiles">
       <div class="tile">
-        <figure class="slot"><img src="photos/t1.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="slot"><img src="photos/t1.jpg" alt="A group photo in a dating profile lineup" loading="lazy" decoding="async"></figure>
         <div class="scrim"></div><span class="tag n">−2.2</span>
         <div class="t-in"><b>The group shot</b><span>Four of five picked "which one are you?"</span></div>
       </div>
       <div class="tile">
-        <figure class="slot"><img src="photos/t2.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="slot"><img src="photos/t2.jpg" alt="A clear solo portrait in a dating profile lineup" loading="lazy" decoding="async"></figure>
         <div class="scrim"></div><span class="tag p">+3.1</span>
         <div class="t-in"><b>The one doing the work</b><span>Lead with it. Four of five said "great smile."</span></div>
       </div>
       <div class="tile">
-        <figure class="slot"><img src="photos/t3.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="slot"><img src="photos/t3.jpg" alt="An outdoor photo that divided the panel" loading="lazy" decoding="async"></figure>
         <div class="scrim"></div><span class="tag z">+0.3</span>
         <div class="t-in"><b>The one that split them</b><span>Two leaned in. Two didn't. That is a finding.</span></div>
       </div>
     </div>
+    <p class="illus">Illustrative examples &mdash; stock photography, sample scores. Not real users or real reviews.</p>
   </div>
 </section>
 
@@ -560,6 +563,7 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
         </div>
         <div class="lc-f"><span>Ready when all 10 are in</span><span style="color:var(--indigo)">Send to panel →</span></div>
       </div>
+    </div>
   </div>
 </section>
 
@@ -583,6 +587,7 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
         <div class="ro-r">4 of 5 chose the same reason: <b>&ldquo;which one are you?&rdquo;</b></div>
         <div class="ro-f"><span>Mean <b style="color:var(--rust)">−2.2</b></span><span>Verdict <b>held it back</b></span></div>
       </div>
+      <p class="illus l">Illustrative example. Not a real review.</p>
     </div>
   </div>
 </section>
@@ -656,7 +661,7 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
       <h2>Stop guessing which photo is <span>the problem.</span></h2>
       <p>Five people already know. Be first in when the App Store listing goes live.</p>
       <div class="dl-row">
-        <a href="#" class="btn btn-white">Coming soon to the App Store</a>
+        <span class="btn btn-white" role="text" aria-disabled="true">Coming soon to the App Store</span>
       </div>
       <p class="fine">iOS · 18+ · no matching, no messaging</p>
     </div>
@@ -669,17 +674,16 @@ footer{background:var(--ink);color:#fff;padding:22px 0 46px;border-top:1px solid
       <div class="f-brand">
         <span class="wordmark">fora</span>
         <p>Honest signal about your dating profile.</p>
-        <div class="social"><a href="#">IG</a><a href="#">TT</a><a href="#">X</a></div>
       </div>
       <div class="f-cols">
         <div class="f-col"><h5>Product</h5><a href="#how">How it works</a><a href="#read">Your read</a><a href="#rev">For reviewers</a><a href="#faq">FAQ</a><a href="#get">Get the app</a></div>
         <div class="f-col"><h5>Company</h5><a href="mailto:support@withfora.com">Contact</a><a href="#trust">Safety</a><a href="mailto:press@withfora.com">Press</a></div>
-        <div class="f-col"><h5>Legal</h5><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a><a href="#">Cookie settings</a></div>
+        <div class="f-col"><h5>Legal</h5><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a><a href="/accessibility/">Accessibility</a></div>
       </div>
     </div>
     <div class="f-base">
-      <span><span class="b18">18+</span>fora is for adults only. © fora — Fora Holding LLC</span>
-      <span style="color:rgba(255,255,255,.6)">English (US) ▾</span>
+      <span><span class="b18">18+</span>fora is for adults only. © 2026 Fora Holding LLC</span>
+      <span style="color:rgba(255,255,255,.6)">Made in Arizona</span>
     </div>
   </div>
 </footer>

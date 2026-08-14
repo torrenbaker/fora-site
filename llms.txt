@@ -15,6 +15,7 @@
 
 - [Home](https://www.withfora.com/): what fora is, how it works, what a "read" contains
 - [Privacy Policy](https://www.withfora.com/privacy/): data collected, retention, deletion
+- [Accessibility](https://www.withfora.com/accessibility/): WCAG 2.2 AA target, known limits, how to report a barrier
 - [Terms of Service](https://www.withfora.com/terms/): eligibility, content rules, credits
 
 ## Contact
