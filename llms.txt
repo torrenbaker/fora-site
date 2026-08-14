@@ -4,8 +4,11 @@
 > profile actually lands. A panel of five verified women independently scores every
 > photo and prompt on a signed -5 to +5 scale and picks a structured reason for each
 > score. There is no matching, chatting, or swiping - fora is the mirror, not the
-> dating app. Reviews contain no free text (score + preset reason only), reviewers
-> are always anonymous, and both sides pass a real-person selfie check. 18+ only.
+> dating app. Reviews contain no free text (score + preset reason only), and both
+> sides pass a real-person selfie check. Anonymity runs one direction: reviewers see
+> the submitted profile (name and age included) in order to review it, while the
+> submitter never learns which reviewer gave which score. Reviewers score blind and
+> cannot see each other's answers before submitting. 18+ only.
 > Operated by Fora Holding LLC (Arizona, USA).
 
 ## Pages
