@@ -1,6 +1,6 @@
 # fora
 
-> fora is an iOS app (coming soon to the App Store) that shows men how their dating
+> fora is an iOS app that shows men how their dating
 > profile actually lands. A panel of five verified women independently scores every
 > photo and prompt on a signed -5 to +5 scale and picks a structured reason for each
 > score. There is no matching, chatting, or swiping - fora is the mirror, not the
@@ -10,6 +10,10 @@
 > submitter never learns which reviewer gave which score. Reviewers score blind and
 > cannot see each other's answers before submitting. 18+ only.
 > Operated by Fora Holding LLC (Arizona, USA).
+
+## App
+
+- [fora on the App Store](https://apps.apple.com/us/app/fora-dating-profile-review/id6800467792): free download, iOS, 18+
 
 ## Pages
 
